@@ -1,3 +1,5 @@
+--Este script permite dar permiso de View Definition y Execute SP a muchos usuarios en una misma DB
+
 USE [NombreDeLaBaseDeDatos];
 
 -- Lista de usuarios a quien otorgamos permisos
