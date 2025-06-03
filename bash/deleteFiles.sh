@@ -1,12 +1,12 @@
 #!/bin/bash
 
 # Ruta del directorio que se va a analizar
-directorio="/ruta/del/directorio"
+directorio="rutadeldirectorio"
 
 # Número de días a partir de los cuales se eliminarán los archivos
 dias_limite=7
 
-# Cambia al directorio especificado
+# Ingresa al directorio especificado
 cd "$directorio" || exit
 
 # Encuentra y elimina los archivos más antiguos
