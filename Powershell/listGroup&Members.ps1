@@ -1,7 +1,7 @@
 Import-Module ActiveDirectory
 
 # Obtenemos todos los grupos de seguridad cuyos nombres comiencen con lo que se guarde en $grupoNombreInicio, si quisiera que solo lo contenga agregar '*' al comienzo
-$grupoLike = "<partName>*"
+$grupoLike = "<Nombre o parte>*"
 $grupos = Get-ADGroup -Filter { Name -like $grupoLike } -Properties Members
 
 # Mostrar la información de el o los grupos
