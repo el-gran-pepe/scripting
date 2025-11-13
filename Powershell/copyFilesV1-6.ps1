@@ -1,6 +1,7 @@
-﻿# Definimos la ruta de origen y destino
-$rutaOrigen = "C:\Users\jjpereyra\Desktop\Rutas"
-$rutaDestino = "\\192.168.12.137\Test\testLocal"
+# Este scrip fue creado para copiar archivos y clasificarlos por mes
+# Definimos la ruta de origen y destino
+$rutaOrigen = "rutaorigen"
+$rutaDestino = "rutadestino"
 
 # Diccionario de nombres de meses en español
 $mesesEspanol = @{
@@ -79,3 +80,4 @@ function Organizar-PorFecha {
 
 # Llamamos a la función
 Organizar-PorFecha -origen $rutaOrigen -destino $rutaDestino
+
