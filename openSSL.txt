@@ -1,0 +1,31 @@
+*****************************************************************
+Si tenemos la PK, el .crt y el intermedio y queremos crear el pfx
+*****************************************************************
+openssl pkcs12 -export -out certificado.pfx -inkey pk.key -in certificate.crt -certfile intermediate.pem
+
+******************************************************************************************************************************************************************************************
+Tuve un caso en el que una vez generado el .pfx, a la hora de importarlo, no me aceptaba la contraseña, aun si no le ponia. Utilice este script y funciona perfecto. El caso se me dio con
+Windows Server 2008 R2
+******************************************************************************************************************************************************************************************
+openssl pkcs12 -export -certpbe PBE-SHA1-3DES -keypbe PBE-SHA1-3DES -nomac -inkey PK.key -in certificado.crt -out certificado-legacy.pfx
+
+********************************************************************************************************************************************
+Cuando tengo el certificado .pfx y quiero desarmarlo en "Clave publica", "Clave privada" y "Clave de la CA", utilizo los siguientes scripts
+********************************************************************************************************************************************
+*************************
+Clave pública  del sitio
+*************************
+openssl pkcs12 -in certificado.pfx -clcerts -nokeys -out clave.cer
+# O si no lee bien el MAC
+openssl pkcs12 -in certificado.pfx -clcerts -nokeys -out clave.cer -nomacver
+ 
+*************************
+Clave privada  del sitio
+*************************
+openssl pkcs12   -in certificado-legacy.pfx   -nocerts -nodes    -out  confirma.key
+ 
+****************************************
+Clave de la CA-Autoridad Certificadora
+****************************************
+openssl pkcs12   -in certificado-legacy.pfx -nodes -nokeys -cacerts   -out  confirma.crt
+
